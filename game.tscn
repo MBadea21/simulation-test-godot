@@ -1,6 +1,67 @@
-[gd_scene load_steps=2 format=3 uid="uid://dsky7lnck2181"]
+[gd_scene load_steps=3 format=3 uid="uid://dsky7lnck2181"]
 
-[ext_resource type="Script" uid="uid://5cwanr7frnph" path="res://game.gd" id="1_80nbo"]
+[ext_resource type="Script" uid="uid://i1c0qhioh0rb" path="res://conway_script.gd" id="4_fc0e3"]
+
+[sub_resource type="GDScript" id="GDScript_feb5d"]
+script/source = "extends Node2D
+
+const row_count : int = 20
+const column_count : int = 40
+const cell_width: int = 15
+
+var cell_matrix : Array = [] # Empty Array which contains all columns
+
+
+func generate():
+	
+	var rng = RandomNumberGenerator.new()
+	
+	cell_matrix = []
+	
+	for column in range(column_count):
+		cell_matrix.push_back([])
+		for row in range(row_count):
+			var cell = true if (rng.randi_range(0,1) == 1) else false
+			cell_matrix[column].push_back(cell)
+			
+	
+
+func _ready():
+	
+	# Generate setup
+	generate()
+	
+	# Test array is populated
+	
+		
+	
+func _process(delta):
+	var timer = 0
+	const limit = 5 # seconds
+	
+	timer+= delta
+	
+	if(timer > limit):
+		pass
+		# run simulation step
+	
+	# For each cell, check all it's neighbours, add the amount of alive or dead, update status
+	
+	
+	# TODO Add image texture integration to create an image texture with the setup
+	
+	pass
+	
+"
 
 [node name="Game" type="Node2D"]
-script = ExtResource("1_80nbo")
+script = SubResource("GDScript_feb5d")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
+texture_filter = 1
+position = Vector2(278, 66)
+scale = Vector2(5.51563, 5.07717)
+centered = false
+script = ExtResource("4_fc0e3")
