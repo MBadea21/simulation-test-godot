@@ -15,7 +15,16 @@ run/main_scene="uid://dsky7lnck2181"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+
 [editor]
 
 version_control/plugin_name="GitPlugin"
 version_control/autoload_on_startup=true
+
+[rendering]
+
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)
