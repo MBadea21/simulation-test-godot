@@ -1,17 +1,23 @@
 extends Sprite2D
 
 var state : bool = false
-var prevState : bool = false
+var nextState : bool
 
 @export var lit : Texture
 @export var unlit : Texture
 
-func setAliveState(_state : bool):
+var gridPos : Vector2i
+
+func setAliveState(_state : bool, init : bool = false):
+	if(init):
+		state = _state
+		
+	nextState = _state
+
+func update():
+	state = nextState
 	
-	prevState = state
-	state = _state
-	
-	if _state:
+	if state:
 		texture = lit
 	else:
 		texture = unlit
@@ -19,3 +25,9 @@ func setAliveState(_state : bool):
 func clickToggleState():
 	if(!Conway.running):
 		setAliveState(!state)
+		update()
+		
+
+func printNeighbourStates():
+	print(Conway.countNeighbours(gridPos.x, gridPos.y))
+	#Conway.countNeighbours(gridPos.x,gridPos.y)
