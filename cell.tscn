@@ -1,0 +1,21 @@
+[gd_scene load_steps=6 format=3 uid="uid://cb7lc62p3xs2a"]
+
+[ext_resource type="Texture2D" uid="uid://bpyf5u7yy2ul0" path="res://unlit.png" id="1_gwrgs"]
+[ext_resource type="Script" uid="uid://ycsn3q8gvqw1" path="res://cell.gd" id="2_2yjhv"]
+[ext_resource type="Texture2D" uid="uid://xxkfcxnjfrq8" path="res://lit.png" id="3_2yjhv"]
+[ext_resource type="Script" uid="uid://t0tqmqr5dkdp" path="res://cell_click_collider.gd" id="4_7c3yk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2yjhv"]
+size = Vector2(24, 24)
+
+[node name="Cell" type="Sprite2D"]
+texture = ExtResource("1_gwrgs")
+script = ExtResource("2_2yjhv")
+lit = ExtResource("3_2yjhv")
+unlit = ExtResource("1_gwrgs")
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("4_7c3yk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_2yjhv")

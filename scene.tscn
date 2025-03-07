@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://cyus7vlv2d441"]
+
+[node name="Scene" type="Node2D"]
+
+[node name="UI" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="PauseText" type="RichTextLabel" parent="UI"]
+clip_contents = false
+custom_minimum_size = Vector2(1024, 0)
+offset_right = 1024.0
+offset_bottom = 40.0
+size_flags_horizontal = 3
+text = "Currently Running"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
