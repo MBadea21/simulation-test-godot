@@ -39,6 +39,19 @@ func _ready() -> void:
 	var pause_text = get_node("/root/Scene/UI/PauseText")
 	pause_text.visible = running
 
+func wrap_index(maxCount: int, index : int):
+	var valid = range(maxCount)
+	
+	if index not in valid:
+		# If it's smaller than the front, then loop to thte back
+		if(index < valid.front()):
+			return valid.back()
+		# If it's not smaller than the front, then it must be bigger, no need to check
+		# Loop to the back
+		return valid.front()
+		
+	# If it is in valid, then 
+	return index
 
 
 func runSimulationStep():
